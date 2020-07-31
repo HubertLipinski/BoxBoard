@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use App\Services\Auth\ApiAuth;
 use App\Services\Auth\ApiAuthService;
-use App\User;
+use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Laravel\Passport\Passport;
