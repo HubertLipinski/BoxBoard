@@ -7,6 +7,7 @@ use App\Http\Requests\Api\AuthLoginRequest;
 use App\Http\Requests\Api\AuthRegisterRequest;
 use App\Services\Auth\ApiAuthService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -23,6 +24,8 @@ class AuthController extends Controller
     }
 
     /**
+     * Login User
+     *
      * @param AuthLoginRequest $request
      * @return JsonResponse
      */
@@ -33,9 +36,25 @@ class AuthController extends Controller
         return response()->json($response);
     }
 
+    /**
+     * Register User
+     *
+     * @param AuthRegisterRequest $request
+     * @return JsonResponse
+     */
     public function register(AuthRegisterRequest $request)
     {
         $response = $this->authService->register($request);
         return response()->json($response);
+    }
+
+    /**
+     * This method handle logout request
+     * @return JsonResponse
+     */
+    public function logout()
+    {
+        $this->authService->logout();
+        return response()->json([ 'message' => 'Successfully logged out' ]);
     }
 }
