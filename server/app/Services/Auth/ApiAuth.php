@@ -6,9 +6,8 @@ namespace App\Services\Auth;
 
 use App\Http\Requests\Api\AuthRegisterRequest;
 use App\Services\Auth\Models\Login;
-use App\User;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use PhpParser\Node\Scalar\String_;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class ApiAuth implements ApiAuthService
