@@ -48,4 +48,11 @@ class User extends Authenticatable
             ->exists();
     }
 
+    /**
+     * Get all owned products
+     */
+    public function products() {
+        return $this->hasMany('App\Models\Product', 'user_id', 'id');
+    }
+
 }

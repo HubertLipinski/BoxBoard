@@ -2,12 +2,13 @@
 
 namespace App\Providers;
 
-use App\Services\Auth\ApiAuth;
-use App\Services\Auth\ApiAuthService;
 use App\Models\User;
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use App\Models\Product;
+use App\Services\Auth\ApiAuth;
 use Laravel\Passport\Passport;
+use Illuminate\Support\Facades\Gate;
+use App\Services\Auth\ApiAuthService;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -17,7 +18,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-//         'App\Model' => 'App\Policies\ModelPolicy',
+        Product::class => 'App\Policies\ProductPolicy',
     ];
 
     /**
