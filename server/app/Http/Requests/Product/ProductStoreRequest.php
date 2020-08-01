@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Api;
+namespace App\Http\Requests\Product;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AuthRegisterRequest extends FormRequest
+class ProductStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,11 @@ class AuthRegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|min:3|max:25',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:8|confirmed',
-            'as_admin' => 'sometimes|boolean'
+            'user_id' => 'required|integer|exists:users,id',
+            'name' => 'required|string|between:3,255',
+            'description' => 'required|string',
+            'price' => 'required|numeric|between:0,999999.99', // decimal(6,2)
+            'image' => 'required|image'
         ];
     }
 }

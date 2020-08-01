@@ -29,7 +29,7 @@ class Login implements Arrayable, Jsonable
     {
         return [
           'user' => $this->user,
-          'token' => $this->token
+          'accessToken' => $this->token
         ];
     }
 
@@ -40,7 +40,7 @@ class Login implements Arrayable, Jsonable
     {
         $model =  [
             'user' => $this->user,
-            'token' => $this->token
+            'accessToken' => $this->token
         ];
 
         return json_encode($model, $options);
