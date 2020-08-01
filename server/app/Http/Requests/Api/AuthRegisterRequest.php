@@ -27,6 +27,7 @@ class AuthRegisterRequest extends FormRequest
             'name' => 'required|string|min:3|max:25',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
+            'as_admin' => 'sometimes|boolean'
         ];
     }
 }
