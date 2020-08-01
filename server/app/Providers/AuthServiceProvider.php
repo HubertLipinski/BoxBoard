@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Price;
 use App\Models\User;
 use App\Models\Product;
 use App\Services\Auth\ApiAuth;
@@ -19,6 +20,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         Product::class => 'App\Policies\ProductPolicy',
+        Price::class => 'App\Policies\PricePolicy',
     ];
 
     /**

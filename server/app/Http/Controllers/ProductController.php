@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProductStoreRequest;
-use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Product;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\Product\ProductStoreRequest;
+use App\Http\Requests\Product\ProductUpdateRequest;
 
 class ProductController extends Controller
 {
@@ -31,16 +30,6 @@ class ProductController extends Controller
     {
         $this->authorize('viewAny', $this->product);
         return $this->product->with('prices')->paginate(self::PAGINATION_AMOUNT);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -77,17 +66,6 @@ class ProductController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -107,7 +85,6 @@ class ProductController extends Controller
 
         $product->update($data);
 
-        return response()->json($product);
         return response()->json(['response' => __('Pomyślnie zaktualizowano produkt')]);
     }
 
@@ -121,8 +98,9 @@ class ProductController extends Controller
     {
         $product = $this->product->findOrFail($id);
         $this->authorize('delete', $product);
+
         $product->delete();
 
-        return response()->json(['response' => __('Pmyślnie usunięto produkt')]);
+        return response()->json(['response' => __('Pomyślnie usunięto produkt')]);
     }
 }
