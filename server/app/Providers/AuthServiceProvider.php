@@ -29,10 +29,14 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
         Passport::routes();
-
         Passport::personalAccessClientId('1');
+
+        Gate::before(function ($user, $ability) {
+            if ($user->isAdmin()) {
+                return true;
+            }
+        });
 
         $this->app->singleton(ApiAuthService::class, function ($app) {
             return new ApiAuth(
