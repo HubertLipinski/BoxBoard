@@ -43,9 +43,14 @@ class User extends Authenticatable
     }
 
     public function isAdmin() {
-        return $this->roles()
-            ->where('role', '=', 'admin')
-            ->exists();
+        return $this->roles->pluck('role')->contains('admin');
+    }
+
+    /**
+     * Get all owned products
+     */
+    public function products() {
+        return $this->hasMany('App\Models\Product', 'user_id', 'id');
     }
 
 }
