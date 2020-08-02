@@ -1,0 +1,12 @@
+version: '3.5'
+services:
+    angular-boxboard:
+      container_name: boxboard-container
+      build: ./client
+      volumes:
+        - './client:/usr/src/app'
+      ports: 
+        - '4200:4200'
+        - '49153:49153' # hot reload
+      command: > 
+        bash -c "npm install && ng serve --port 4200 --host 0.0.0.0 --poll 1"
