@@ -1,0 +1,35 @@
+<div class="jumbotron vertical-center">
+  <div class="container p-0">
+    <div class="h1 text-center pb-5">Zaloguj się</div>
+    <form class="col-sm-12 col-md-6 offset-md-3" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" formControlName="email" aria-describedby="emailHelp" placeholder="Enter email" required [ngClass]="{ 'is-invalid': submitted && form.email.errors }">
+        <div *ngIf="submitted && form.email.errors" class="invalid-feedback d-block">
+          <div *ngIf="form.email.errors.required">Email is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password" required [ngClass]="{ 'is-invalid': submitted && form.password.errors }">
+        <div *ngIf="submitted && form.password.errors" class="invalid-feedback d-block">
+          <div *ngIf="form.password.errors.required">Password is required</div>
+        </div>
+      </div>
+      <div class="row no-gutters p-0 pt-3">
+        <div class="col-6 text-left">
+          <button class="btn btn-primary " type="submit" [disabled]="loading">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Zaloguj
+          </button>
+        </div>
+        <div class="col-6 text-right">
+          <button routerLink="/register" type="button" class="btn btn-secondary">Rejestracja</button>
+        </div>
+      </div>
+      <div class="col-12 no-gutters p-0 mt-2">
+        <button type="button" class="btn btn-link text-light px-0">Logowanie testowe</button>
+      </div>
+    </form>
+  </div>
+</div>
