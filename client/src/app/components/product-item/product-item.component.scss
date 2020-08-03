@@ -1,0 +1,26 @@
+.card {
+  width: 250px;
+  background-color: #545168;
+  border-radius: 10px;
+  .card-img-top {
+    border-radius: 10px;
+  }
+  .card-body {
+    padding: 0;
+    .card-price {
+      font-size: 20px;
+      color: #FFA45C;
+    }
+    .card-tex {
+      height: 50px;
+      width: 220px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+  }
+  .product:hover img {
+      opacity: 0.5;
+  }
+}

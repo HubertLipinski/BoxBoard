@@ -12,4 +12,8 @@ export class TokenService {
   set(token: string) { localStorage.setItem('token', token); }
 
   revoke() { localStorage.removeItem('token'); }
+
+  exists(): boolean {
+    return !!localStorage.getItem('token');
+  }
 }

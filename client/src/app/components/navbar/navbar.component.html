@@ -14,7 +14,12 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Produkty</a>
+        <a routerLink="/products"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact:true }"
+           class="nav-link">
+          Produkty
+        </a>
       </li>
       <li class="nav-item" *ngIf="!currentUser; else logoutBlock">
         <a routerLink="/login"
