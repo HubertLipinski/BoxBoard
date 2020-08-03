@@ -18,7 +18,8 @@ class CreateProductsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('name');
             $table->longText('description');
-            $table->string('img');
+            $table->string('img_path');
+            $table->string('img_url');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

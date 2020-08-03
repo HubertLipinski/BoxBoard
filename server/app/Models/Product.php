@@ -10,7 +10,8 @@ class Product extends Model
         'user_id',
         'name',
         'description',
-        'img'
+        'img_path',
+        'img_url'
     ];
 
     /**
