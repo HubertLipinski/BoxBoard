@@ -16,7 +16,7 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Produkty</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!currentUser; else logoutBlock">
         <a routerLink="/login"
            routerLinkActive="active"
            [routerLinkActiveOptions]="{ exact:true }"
@@ -24,6 +24,16 @@
           Login
         </a>
       </li>
+      <ng-template #logoutBlock>
+        <li class="nav-item">
+          <a (click)="logout()"
+             class="nav-link btn-link"
+             role="button"
+          >
+            Wyloguj
+          </a>
+        </li>
+      </ng-template>
     </ul>
 
 </nav>

@@ -1,34 +1,42 @@
 <div class="jumbotron vertical-center">
   <div class="container p-0">
     <div class="h1 text-center pb-5">Zarejestruj się</div>
-    <form class="col-sm-12 col-md-6 offset-md-3" #register=ngForm (ngSubmit)="onSubmit()">
+    <form class="col-sm-12 col-md-6 offset-md-3" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="name">Imię i nazwisko</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Jan Kowalski" required>
+        <input type="text" class="form-control" id="name" formControlName="name" placeholder="Jan Kowalski" required [ngClass]="{ 'is-invalid': submitted && form.name.errors }">
+        <div *ngIf="submitted && form.name.errors" class="invalid-feedback">
+          <div *ngIf="form.name.errors.required">Name is required</div>
+        </div>
       </div>
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" name="email" placeholder="jan@kowalski.pl" required>
+        <input type="email" class="form-control" id="email" formControlName="email" placeholder="jan@kowalski.pl" required [ngClass]="{ 'is-invalid': submitted && form.email.errors }">
+        <div *ngIf="submitted && form.email.errors" class="invalid-feedback">
+          <div *ngIf="form.email.errors.required">Email is required</div>
+        </div>
       </div>
       <div class="form-group">
         <label for="password">Hasło</label>
-        <input type="password" class="form-control" id="password" name="password" required>
+        <input type="password" class="form-control" id="password" formControlName="password" required [ngClass]="{ 'is-invalid': submitted && form.password.errors }">
+        <div *ngIf="submitted && form.password.errors" class="invalid-feedback">
+          <div *ngIf="form.password.errors.required">Password is required</div>
+        </div>
       </div>
       <div class="form-group">
         <label for="password-confirm">Potwierdź hasło</label>
-        <input type="password" class="form-control" id="password-confirm" name="password_confirmation" required>
-      </div>
-      <div class="col-12 no-gutters p-0 mt-2">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name="register_admin" value="" id="admin">
-          <label class="form-check-label" for="admin">
-            Zarejestruj jako admin
-          </label>
+        <input type="password" class="form-control" id="password-confirm" formControlName="password_confirmation" required [ngClass]="{ 'is-invalid': submitted && form.password_confirmation.errors }">
+        <div *ngIf="submitted && form.password_confirmation.errors" class="invalid-feedback">
+          <div *ngIf="form.password_confirmation.errors.required">ConfirmPassword is required</div>
+          <div *ngIf="form.password_confirmation.errors.mustMatch">Passwords must match</div>
         </div>
       </div>
       <div class="row no-gutters p-0 pt-3">
         <div class="col-12 text-right">
-          <button type="submit" class="btn btn-primary">Zarejestruj</button>
+          <button class="btn btn-primary text-right" type="submit" [disabled]="loading">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Zarejestruj
+          </button>
         </div>
       </div>
     </form>
