@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {Product} from '../../models/Product';
 import {ProductService} from '../../services/product.service';
 
@@ -12,6 +12,8 @@ import {ProductService} from '../../services/product.service';
 export class ProductFormComponent implements OnInit {
   @Input() product: Product;
   @Output() done = new EventEmitter<boolean>();
+  @Output() productChange = new EventEmitter<Product>();
+
   editForm: FormGroup;
   submitted = false;
   loading = false;
@@ -20,32 +22,44 @@ export class ProductFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private productService: ProductService
+    private productService: ProductService,
   ) {
   }
 
   ngOnInit() {
     this.editForm = this.formBuilder.group({
-      // user_id: [this.product.userId, Validators.required],
       name: [this.product.name],
       description: [this.product.description],
     });
-
-    console.log('form: ', this.editForm);
   }
 
   get form() { return this.editForm.controls; }
 
   fileSelected(event) {
     this.selectedImg = event.target.files[0] as File;
-    console.log(this.selectedImg);
-    this.editForm.addControl('img', new FormControl(this.selectedImg));
+    this.editForm.addControl('image', new FormControl(this.selectedImg));
   }
 
   onSubmit() {
-    console.log('sending...', this.form);
+    if (this.editForm.invalid) {
+      return;
+    }
+    this.loading = true;
+    this.productService.update(this.editForm.value, this.product.id).subscribe(
+      data => {
+          this.product = data;
+          this.close();
+          this.productChange.emit(data);
+        },
+        err => {
+          this.loading = false;
+          console.log(err);
+        }
+    );
+  }
 
-    // pomyslna edycja
-    // this.done.emit(true);
+  close() {
+    this.loading = false;
+    this.done.emit(true);
   }
 }

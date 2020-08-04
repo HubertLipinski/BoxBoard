@@ -5,7 +5,6 @@ import {LoginComponent} from './components/Auth/login/login.component';
 import {RegisterComponent} from './components/Auth/register/register.component';
 import {ProductsComponent} from './components/products/products.component';
 import {ProductPageComponent} from './components/product-page/product-page.component';
-import {ProductFormComponent} from './components/product-form/product-form.component';
 import {AdminIndexComponent} from './components/Auth/AdminPanel/admin-index/admin-index.component';
 import {UserAdminService} from './services/user-admin.service';
 import {UsersComponent} from './components/Auth/AdminPanel/users/users.component';
@@ -23,9 +22,9 @@ const routes: Routes = [
     component: AdminIndexComponent,
     canActivate: [UserAdminService],
     children: [
-      { path: '', component:  UsersComponent },
       { path: 'users', component:  UsersComponent },
       { path: 'products', component:  ProductsAdminComponent },
+      {path: '', redirectTo: 'users', pathMatch: 'full'},
       // { path: 'products/edit/:id', component:  ProductPageComponent, data: {edit: true} }
     ]
   },

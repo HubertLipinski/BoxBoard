@@ -20,6 +20,7 @@ import { ProductFormComponent } from './components/product-form/product-form.com
 import { AdminIndexComponent } from './components/Auth/AdminPanel/admin-index/admin-index.component';
 import { UsersComponent } from './components/Auth/AdminPanel/users/users.component';
 import { ProductsAdminComponent } from './components/Auth/AdminPanel/products-admin/products-admin.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { ProductsAdminComponent } from './components/Auth/AdminPanel/products-ad
     AdminIndexComponent,
     UsersComponent,
     ProductsAdminComponent,
+    UserFormComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,52 @@
-<p>users works!</p>
+<div class="container table-responsive text-center my-2">
+  <div class="h2 py-2 mt-3">
+    Użytkownicy
+    <button class="btn btn-primary">Dodaj</button>
+  </div>
+  <div *ngIf="loading" class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div *ngIf="!loading && users.length > 0">
+    <table class="table table-hover table-sm table-dark p-3">
+      <thead>
+      <tr>
+        <th scope="col">LP</th>
+        <th scope="col">Imię i nazwisko</th>
+        <th scope="col">Email</th>
+        <th scope="col">Role</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="py-1" *ngFor="let i = index; let user of users | paginate: { id: 'admin_product_pagination', itemsPerPage: 8, currentPage: page, totalItems: totalRecords }"
+          [attr.data-index]="i"
+      >
+        <td colspan="6" *ngIf="user.id === toEdit; else row">
+          <app-user-form class="min-vw-100"  [(user)]="user" (done)="close()"></app-user-form>
+        </td>
+        <ng-template #row>
+          <th class="align-middle" scope="row">{{ i + 1 }}</th>
+          <td class="align-middle">{{ user.name }}</td>
+          <td class="align-middle">{{ user.email }}</td>
+          <td class="align-middle">
+            <p class="m-0 p-0" *ngFor="let role of user.roles">{{ role.role }}</p>
+          </td>
+          <td class="align-middle text-center m-auto">
+            <button type="button" class="btn btn-outline-primary m-1" (click)="edit(user.id)">Edytuj</button>
+            <button type="button" class="btn btn-outline-danger m-1" (click)="delete(user.id)">
+              <span *ngIf="deletingUser === user.id" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              Usuń
+            </button>
+          </td>
+        </ng-template>
+      </tr>
+      </tbody>
+    </table>
+    <div class="col-12 text-center mt-3">
+      <pagination-controls class="custom-pagination" id="admin_product_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>
+  <div *ngIf="users.length <= 0">
+    <p>Brak użytkowników.</p>
+  </div>
+</div>

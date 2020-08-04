@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Route, Router} from '@angular/router';
 import {ProductService} from '../../services/product.service';
-import {first} from 'rxjs/operators';
 import {Product} from '../../models/Product';
 import {AlertService} from '../../services/alert.service';
+import {AuthServiceService} from '../../services/auth-service.service';
 
 @Component({
   selector: 'app-product-page',
@@ -11,6 +11,7 @@ import {AlertService} from '../../services/alert.service';
   styleUrls: ['./product-page.component.scss']
 })
 export class ProductPageComponent implements OnInit {
+  @Input() test: any;
   productId: string;
   product: Product;
   loading: boolean;
@@ -21,11 +22,12 @@ export class ProductPageComponent implements OnInit {
     private route: ActivatedRoute,
     private alertService: AlertService,
     private router: Router,
-    private productService: ProductService
+    private productService: ProductService,
+    private authServiceService: AuthServiceService
   ) {
     this.productId = this.route.snapshot.paramMap.get('id');
     this.loading = true;
-    this.productService.get(parseInt(this.productId, 10)).pipe(first()).subscribe(
+    this.productService.get(parseInt(this.productId, 10)).subscribe(
       data => {
           this.product = data[0];
           this.loading = false;
@@ -43,7 +45,6 @@ export class ProductPageComponent implements OnInit {
 
   editProduct(value) {
     this.edit = !value;
-    console.log('editing');
   }
 
 }

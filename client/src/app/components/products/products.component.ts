@@ -19,7 +19,6 @@ export class ProductsComponent implements OnInit {
       this.products = items;
       this.totalRecords = items.length;
       this.loading = false;
-      console.log(items);
     });
   }
 
