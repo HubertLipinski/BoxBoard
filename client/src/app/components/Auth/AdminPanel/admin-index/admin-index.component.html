@@ -1,0 +1,31 @@
+<div>
+  <div class="navbar d-flex justify-content-center py-2">
+  <ul class="navbar-nav d-flex flex-row py-2">
+    <li class="nav-item">
+      <a routerLink="/admin/users"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact:true }"
+         class="nav-link px-2">
+        Użytkownicy
+      </a>
+    </li>
+    <li class="nav-item px-2">
+      <a routerLink="/admin/products"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact:true }"
+         class="nav-link">
+        Produkty
+      </a>
+    </li>
+    <li class="nav-item px-2">
+      <a routerLink="/admin/prices"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact:true }"
+         class="nav-link disabled">
+        Ceny
+      </a>
+    </li>
+  </ul>
+</div>
+<router-outlet></router-outlet>
+</div>

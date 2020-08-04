@@ -1,0 +1,31 @@
+<div class="container text-left">
+  <form class="w-50 m-auto" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <div class="h3 text-center py-3">Edytuj produkt</div>
+    <div class="form-group">
+      <label for="name">Nazwa</label>
+      <input type="text" class="form-control" id="name" formControlName="name" [ngClass]="{ 'is-invalid': submitted && form.name.errors }">
+      <div *ngIf="submitted && form.name.errors" class="invalid-feedback d-block">
+        <div *ngIf="form.name.errors.required">Name is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description">Opis</label>
+      <textarea class="form-control" id="description" formControlName="description" [ngClass]="{ 'is-invalid': submitted && form.description.errors }" rows="5"></textarea>
+      <div *ngIf="submitted && form.description.errors" class="invalid-feedback d-block">
+        <div *ngIf="form.description.errors.required">Description is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="name">Zdjęcie</label>
+      <input type="file" class="form-control-file" id="img" (change)="fileSelected($event)">
+    </div>
+    <div class="row no-gutters p-0 pt-3">
+      <div class="col-12 text-right">
+        <button class="btn btn-primary text-right py-2 px-4" type="submit" [disabled]="loading">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Aktualizuj
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

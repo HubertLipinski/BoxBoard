@@ -1,0 +1,13 @@
+.navbar {
+  background-color: #56536c;
+  a {
+    color: darken(#fff, 15%);
+    text-decoration: none;
+  }
+  a:hover, .active {
+    color: #fff;
+  }
+  .active {
+    font-weight: bold;
+  }
+}

@@ -15,7 +15,6 @@ export class TokenInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const currentUser = this.authServiceService.currentUserValue;
-    console.log('intercepted request!', this.tokenService.get());
     if (currentUser && this.tokenService.exists()) {
       request = request.clone({
         setHeaders: {

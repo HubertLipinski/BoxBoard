@@ -27,7 +27,9 @@ export class AuthServiceService {
 
   login(email, password) {
     return this.http.post<any>(`${this.baseUrl}/login`, {email, password}).pipe(map(response => {
-      localStorage.setItem('currentUser', JSON.stringify(response.user));
+      let user = response.user;
+      user.isAdmin = response.admin;
+      localStorage.setItem('currentUser', JSON.stringify(user));
       this.tokenService.set(response.accessToken);
       this.currentUserSubject.next(response.user);
       return response;

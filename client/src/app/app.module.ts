@@ -15,6 +15,11 @@ import { ProductsComponent } from './components/products/products.component';
 import { TokenInterceptor } from './components/Auth/TokenInterceptor';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { ProductPageComponent } from './components/product-page/product-page.component';
+import { ProductFormComponent } from './components/product-form/product-form.component';
+import { AdminIndexComponent } from './components/Auth/AdminPanel/admin-index/admin-index.component';
+import { UsersComponent } from './components/Auth/AdminPanel/users/users.component';
+import { ProductsAdminComponent } from './components/Auth/AdminPanel/products-admin/products-admin.component';
 
 
 @NgModule({
@@ -28,6 +33,11 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AlertComponent,
     ProductsComponent,
     ProductItemComponent,
+    ProductPageComponent,
+    ProductFormComponent,
+    AdminIndexComponent,
+    UsersComponent,
+    ProductsAdminComponent,
   ],
   imports: [
     BrowserModule,
