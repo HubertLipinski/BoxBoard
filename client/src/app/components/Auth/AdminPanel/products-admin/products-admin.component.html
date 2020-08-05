@@ -1,7 +1,7 @@
 <div class="container table-responsive text-center my-2">
   <div class="h2 py-2 mt-3">
     Produkty
-    <button class="btn btn-primary">Dodaj</button>
+    <button routerLink="/products/add" class="btn btn-primary">Dodaj</button>
   </div>
   <div *ngIf="loading" class="spinner-border" role="status">
     <span class="sr-only">Loading...</span>
@@ -48,7 +48,7 @@
       <pagination-controls class="custom-pagination" id="admin_product_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
     </div>
   </div>
-  <div *ngIf="products.length <= 0">
+  <div *ngIf="!loading && products.length <= 0">
     <p>Brak produktów.</p>
   </div>
 </div>

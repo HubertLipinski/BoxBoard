@@ -20,7 +20,6 @@ export class UsersComponent implements OnInit {
     this.userService.getAll().subscribe(users => {
         this.users = users;
         this.totalRecords = users.length;
-        console.log(users);
         this.loading = false;
       }
     );

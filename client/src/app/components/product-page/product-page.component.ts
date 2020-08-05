@@ -11,7 +11,6 @@ import {AuthServiceService} from '../../services/auth-service.service';
   styleUrls: ['./product-page.component.scss']
 })
 export class ProductPageComponent implements OnInit {
-  @Input() test: any;
   productId: string;
   product: Product;
   loading: boolean;

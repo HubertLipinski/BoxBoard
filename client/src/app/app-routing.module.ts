@@ -9,6 +9,8 @@ import {AdminIndexComponent} from './components/Auth/AdminPanel/admin-index/admi
 import {UserAdminService} from './services/user-admin.service';
 import {UsersComponent} from './components/Auth/AdminPanel/users/users.component';
 import {ProductsAdminComponent} from './components/Auth/AdminPanel/products-admin/products-admin.component';
+import {AddProductComponent} from './components/Auth/add-product/add-product.component';
+import {AddUserComponent} from './components/Auth/add-user/add-user.component';
 
 
 const routes: Routes = [
@@ -16,6 +18,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'products', component: ProductsComponent },
+  { path: 'products/add', component:  AddProductComponent },
   { path: 'product/:id', component: ProductPageComponent },
   {
     path: 'admin',
@@ -23,9 +26,10 @@ const routes: Routes = [
     canActivate: [UserAdminService],
     children: [
       { path: 'users', component:  UsersComponent },
+      { path: 'users/add', component:  AddUserComponent },
       { path: 'products', component:  ProductsAdminComponent },
-      {path: '', redirectTo: 'users', pathMatch: 'full'},
-      // { path: 'products/edit/:id', component:  ProductPageComponent, data: {edit: true} }
+      { path: 'products/add', component:  AddProductComponent},
+      { path: '', redirectTo: 'users', pathMatch: 'full' },
     ]
   },
 ];

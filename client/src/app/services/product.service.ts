@@ -9,6 +9,9 @@ import {Product} from '../models/Product';
 })
 export class ProductService {
   private baseUrl = environment.apiUrl + '/products';
+  private HttpUploadOptions = {
+    headers: new HttpHeaders({ Accept: 'application/json' })
+  };
 
   constructor(private http: HttpClient) { }
 
@@ -20,12 +23,12 @@ export class ProductService {
     return this.http.get<Product>(`${this.baseUrl}/${id}`);
   }
 
-  update(data, id): Observable<Product> {
-    return this.http.put<Product>(`${this.baseUrl}/${id}`, data);
+  create(data): Observable<Product> {
+    return this.http.post<any>(this.baseUrl, data, this.HttpUploadOptions);
   }
 
-  imageUpload() {
-    // todo image upload
+  update(data, id): Observable<Product> {
+    return this.http.put<Product>(`${this.baseUrl}/${id}`, data, this.HttpUploadOptions);
   }
 
   delete(id): Observable<Product> {

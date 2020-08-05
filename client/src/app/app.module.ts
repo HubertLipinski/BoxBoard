@@ -21,6 +21,8 @@ import { AdminIndexComponent } from './components/Auth/AdminPanel/admin-index/ad
 import { UsersComponent } from './components/Auth/AdminPanel/users/users.component';
 import { ProductsAdminComponent } from './components/Auth/AdminPanel/products-admin/products-admin.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
+import { AddUserComponent } from './components/Auth/add-user/add-user.component';
+import { AddProductComponent } from './components/Auth/add-product/add-product.component';
 
 
 @NgModule({
@@ -40,6 +42,8 @@ import { UserFormComponent } from './components/user-form/user-form.component';
     UsersComponent,
     ProductsAdminComponent,
     UserFormComponent,
+    AddUserComponent,
+    AddProductComponent,
   ],
   imports: [
     BrowserModule,

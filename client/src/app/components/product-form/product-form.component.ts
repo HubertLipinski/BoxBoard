@@ -30,6 +30,7 @@ export class ProductFormComponent implements OnInit {
     this.editForm = this.formBuilder.group({
       name: [this.product.name],
       description: [this.product.description],
+      image: ['']
     });
   }
 
@@ -37,15 +38,21 @@ export class ProductFormComponent implements OnInit {
 
   fileSelected(event) {
     this.selectedImg = event.target.files[0] as File;
-    this.editForm.addControl('image', new FormControl(this.selectedImg));
+    this.editForm.get('image').setValue(this.selectedImg);
   }
 
   onSubmit() {
     if (this.editForm.invalid) {
       return;
     }
+
+    const formData = new FormData();
+    formData.append('name', this.editForm.get('name').value);
+    formData.append('description', this.editForm.get('description').value);
+    formData.append('image', this.selectedImg);
+
     this.loading = true;
-    this.productService.update(this.editForm.value, this.product.id).subscribe(
+    this.productService.update(formData, this.product.id).subscribe(
       data => {
           this.product = data;
           this.close();

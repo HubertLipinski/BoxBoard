@@ -15,7 +15,7 @@
       <pagination-controls class="custom-pagination" id="product_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
     </div>
   </div>
-  <div class="text-center" *ngIf="products.length <= 0">
+  <div class="text-center" *ngIf="!loading && products.length <= 0">
     <p>Brak produktów.</p>
   </div>
 </div>
