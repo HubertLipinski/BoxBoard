@@ -18,17 +18,14 @@
       </div>
       <div class="row no-gutters p-0 pt-3">
         <div class="col-6 text-left">
-          <button class="btn btn-primary " type="submit" [disabled]="loading">
+          <button class="btn btn-primary py-2 px-4" type="submit" [disabled]="loading">
             <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
             Zaloguj
           </button>
         </div>
         <div class="col-6 text-right">
-          <button routerLink="/register" type="button" class="btn btn-secondary">Rejestracja</button>
+          <button routerLink="/register" class="btn btn-secondary py-2 px-4" type="button">Rejestracja</button>
         </div>
-      </div>
-      <div class="col-12 no-gutters p-0 mt-2">
-        <button type="button" class="btn btn-link text-light px-0">Logowanie testowe</button>
       </div>
     </form>
   </div>

@@ -13,10 +13,8 @@ export class AlertService {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         if (this.keepAfterRouteChange) {
-          // only keep for a single route change
           this.keepAfterRouteChange = false;
         } else {
-          // clear alert message
           this.clear();
         }
       }

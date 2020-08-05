@@ -40,6 +40,7 @@ class Login implements Arrayable, Jsonable
     {
         $model =  [
             'user' => $this->user,
+            'admin' => $this->user->isAdmin(),
             'accessToken' => $this->token
         ];
 

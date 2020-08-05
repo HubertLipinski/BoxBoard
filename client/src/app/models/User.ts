@@ -5,5 +5,6 @@ export class User {
   verified: Date;
   created: Date;
   updated: Date;
-  token: null;
+  roles: Array<object>;
+  isAdmin: boolean;
 }

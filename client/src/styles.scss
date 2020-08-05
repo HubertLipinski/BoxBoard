@@ -15,10 +15,37 @@ body {
   color: #fff;
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
-  overflow-y: hidden;
+  //overflow-y: hidden;
 }
 
 .h1 {
   font-size: 45px;
-  //font-weight: normal;
+}
+
+// Bootstrap override
+.custom-pagination {
+  .ngx-pagination a, .ngx-pagination li {
+    background-color: #65617D;
+    color: #fff;
+  }
+  .ngx-pagination .current {
+    background: #7C779A;
+  }
+  .ngx-pagination a:hover {
+    background-color: #7C779A;
+  }
+}
+
+.table-dark {
+  color: #fff;
+  background-color: #56536c;
+}
+
+.table-dark th, .table-dark td, .table-dark thead th {
+  border-color: #63607a;
+}
+
+.btn-primary, .btn-primary:active, .btn-primary:visited {
+  background-color: #FFA45C !important;
+  border-color: #FFA45C !important;
 }

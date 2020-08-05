@@ -23,11 +23,12 @@
 }
 
 .navbar-nav {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   list-style: none;
   align-items: center;
   padding: 20px 0;
+  flex-wrap: wrap;
   li {
     display: inline-block;
     flex: auto;
@@ -42,5 +43,14 @@
     .active {
       font-weight: bold;
     }
+  }
+}
+
+@media only screen and (max-width: 590px) {
+  .navbar-brand {
+    margin: 0 auto;
+  }
+  .navbar-nav li {
+    flex-basis: 100vw;
   }
 }

@@ -1,0 +1,42 @@
+<div class="container m-auto py-3">
+  <div class="col-12 text-center" *ngIf="loading" >
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    loading
+  </div>
+  <div class="row py-2 d-flex justify-content-center align-items-center text-center" *ngIf="!loading && !error && !edit">
+    <div class="col-12 text-right">
+      <button class="btn btn-outline-light px-2 py-1"
+              *ngIf="product.user_id === authServiceService.currentUserValue.id
+              || authServiceService.currentUserValue.isAdmin"
+              (click)="editProduct()"
+      >
+        Edytuj
+      </button>
+    </div>
+    <div class="col-sm-12 py-3">
+      <p class="h2 text-md-left">{{ product.name }}</p>
+    </div>
+    <div class="col-sm-12 col-md-4 px-3">
+      <img class="img-fluid" src="{{ product.img_url }}" alt="{{ product.name }} - image">
+    </div>
+    <div class="col-sm-12 col-md-8 mt-xs-3 mt-md-0 p-2">
+      <p>
+        {{ product.description }}
+      </p>
+    </div>
+    <div class="col-sm-12 mt-sm-3 mt-md-5 text-left">
+      <p class="h3 py-1">Dostępne ceny:</p>
+      <ul class="list-group pl-3 d-flex flex-row justify-content-between">
+        <li class="text-orange" *ngIf="!product.prices">Brak</li>
+        <li class="text-orange" *ngFor="let price of product.prices">{{price.price}} zł</li>
+      </ul>
+    </div>
+  </div>
+  <app-product-form class="d-block w-100" *ngIf="edit" [(product)]="product" (done)="editProduct($event)"></app-product-form>
+</div>
+
+
+
+
