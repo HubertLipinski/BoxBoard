@@ -1,1 +1,51 @@
-/* You can add global styles to this file, and also import other style files */
+// Imports
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+//@import '~bootstrap/dist/css/bootstrap.min.css';
+
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #65617D;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  //overflow-y: hidden;
+}
+
+.h1 {
+  font-size: 45px;
+}
+
+// Bootstrap override
+.custom-pagination {
+  .ngx-pagination a, .ngx-pagination li {
+    background-color: #65617D;
+    color: #fff;
+  }
+  .ngx-pagination .current {
+    background: #7C779A;
+  }
+  .ngx-pagination a:hover {
+    background-color: #7C779A;
+  }
+}
+
+.table-dark {
+  color: #fff;
+  background-color: #56536c;
+}
+
+.table-dark th, .table-dark td, .table-dark thead th {
+  border-color: #63607a;
+}
+
+.btn-primary, .btn-primary:active, .btn-primary:visited {
+  background-color: #FFA45C !important;
+  border-color: #FFA45C !important;
+}

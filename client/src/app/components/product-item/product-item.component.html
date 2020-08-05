@@ -1,0 +1,12 @@
+<div class="card p-2 m-2">
+  <a class="d-block text-decoration-none text-light product"
+     [routerLink]="['/product', product.id]"
+  >
+    <img class="card-img-top img-fluid" src="{{ product.img_url }}" alt="{{ product.name }} - image">
+    <div class="card-body mt-2 p-2">
+      <h5 class="card-title font-weight-light">{{ product.name }}</h5>
+      <p class="card-price text-right font-weight-light">Dostępnych: {{ product.prices.length }}</p>
+      <p class="card-text text-truncate">{{ product.description }}</p>
+    </div>
+  </a>
+</div>

@@ -19,10 +19,7 @@ Route::group(['prefix' => 'auth'], function() {
     Route::get('logout', 'Api\AuthController@logout');
 });
 
+Route::resource('users', 'UserController');
 Route::resource('products', 'ProductController');
+Route::put('products', 'ProductController@create');
 Route::resource('prices', 'PriceController');
-Route::post('image', 'ImageController@getImage');
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
